@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View House Listings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your House Listings</h1>
+        <ul>
+            {% for house in house_listings %}
+                <li>
+                    {{ house.title }} - {{ house.status }} 
+                    <a href="{% url 'update_house_listing' house.property_id %}">Edit</a> | 
+                    <a href="{% url 'delete_house_listing' house.property_id %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <p><a href="{% url 'home' %}">Back to Home</a></p>
+    </div>
+</body>
+</html>
