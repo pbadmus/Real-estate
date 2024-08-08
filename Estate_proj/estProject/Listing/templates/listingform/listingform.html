@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Add House Listing</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
 </head>
 <body>
     <div class="container">
@@ -32,8 +32,9 @@
                     {{ video_form.video }}
                 </div>
             {% endfor %}
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <form action="{% url 'success_page' %}">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </form>
     </div>
 </body>

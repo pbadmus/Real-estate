@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 
 @login_required
-def home_view(request):
+def home(request):
     return render(request, 'estApp/home.html')
 
 
@@ -36,7 +36,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)  
         if user is not None:  
             login(request, user)  
-            next_url = request.POST.get('next') or request.GET.get('next') or reverse('create_listing')  
+            next_url = request.POST.get('next') or request.GET.get('next') or reverse('home')  
             return redirect(next_url) 
         else:
             error_message = "Invalid username or password, please enter correct credentials."  

@@ -9,7 +9,9 @@
 <body>
     <div class="container">
         <h2>Welcome, {{ user.username }}</h2>
-        
+        <ul>
+            <li><a href="{% url 'create_listing' %}">Add House Listing</a></li>
+        </ul>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Logout</button>

@@ -5,6 +5,9 @@ from .forms import ListingForm, ListingImageFormSet, ListingVideoFormSet
 
 # Create your views here.
 
+def success_page(request):
+    return render(request, "listingform/success_page.html")
+
 @login_required
 def create_listing(request):
     if request.method == "POST":
@@ -29,7 +32,7 @@ def create_listing(request):
                     video.listing = house_listing
                     vid.save()
                     
-            return redirect('home')
+            return redirect('success_page')
     else:
         form = ListingForm()
         image_formset = ListingImageFormSet(queryset=ListingImage.objects.none())
