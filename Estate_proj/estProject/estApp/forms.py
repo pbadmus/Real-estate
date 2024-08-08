@@ -8,19 +8,22 @@ ROLE_CHOICES = [
 ]
 
 class RegisterUser(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput, label="Password")
     password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
     role = forms.ChoiceField(choices=ROLE_CHOICES, label="Role")
     
     class Meta:
         model = User
-        fields = ["username", "password", "password_confirm", "role"]
+        fields = ["username","password", "password_confirm","email", "role"]
 
         # This is to check if the user enter two matching passwords
         def clean(self):
             cleaned_data = super().clean()
             password = cleaned_data.get('password')
             password_confirm = cleaned_data.get('password_confirm')
+            
+            # the verfication email can be sent here 
+            
             if password and password_confirm and password != password_confirm:
                 raise forms.ValidationError("Passwords do not match!")
             return cleaned_data
