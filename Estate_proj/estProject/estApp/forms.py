@@ -1,4 +1,3 @@
-from .models import Housing
 from django import forms
 from django.contrib.auth.models import User
 
@@ -27,28 +26,3 @@ class RegisterUser(forms.ModelForm):
             if password and password_confirm and password != password_confirm:
                 raise forms.ValidationError("Passwords do not match!")
             return cleaned_data
-
-class HouseListing(forms.ModelForm):
-    class Meta:
-        model = Housing
-        fields  = '__all__'
-        labels = {
-            'property_id': "Property ID",
-            'title': 'Title',
-            'MLS_no': 'Contact Number',
-            'exterior_acre': 'Exterior Acre',
-            'price': "Price", 
-            'location': "Location",
-            'status': 'Status',
-            'description': "Description"   
-        }
-        
-        widgets = {
-            'product_id': forms.NumberInput(attrs={'placeholder':'e.g 1', 'class':'form-control'}), 
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Land or 3-bedroom apartment'}),
-            'MLS_no': forms.NumberInput(attrs={'placeholder':'e.g +233***', 'class':'form-control'}),
-            'price': forms.NumberInput(attrs={'placeholder':'e.g 10000', 'class':'form-control'}),
-            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the location'}),
-            'status': forms.Select(attrs={'class': 'form-control'}),
-            
-        }

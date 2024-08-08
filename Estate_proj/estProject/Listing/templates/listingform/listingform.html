@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add House Listing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New House Listing</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+
+            <h3>Upload Images</h3>
+            {{ image_formset.management_form }}
+            {% for image_form in image_formset %}
+                <div class="form-group">
+                    {{ image_form.image.label_tag }}
+                    {{ image_form.image }}
+                </div>
+            {% endfor %}
+
+            <h3>Upload Videos</h3>
+            {{ video_formset.management_form }}
+            {% for video_form in video_formset %}
+                <div class="form-group">
+                    {{ video_form.video.label_tag }}
+                    {{ video_form.video }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
