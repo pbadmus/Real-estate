@@ -44,10 +44,16 @@ def create_listing(request):
                      })    
 
 
-@login_required
-def view_house_listing(request):
-    house_list = Listing.objects.filter(owner=request.user)
-    return render(request, 'view_house_listings.html', {'house_listings': house_list})
+def view_listing(request, listing_id):
+    listing = get_object_or_404(Listing, id=listing_id, owner=request.user)
+    images = ListingImage.objects.filter(listing=listing)
+    videos = ListingVideo.objects.filter(listing=listing)
+
+    return render(request, 'listingform/view_listing.html', {
+        'listing': listing,
+        'images': images,
+        'videos': videos,
+    })
 
 
 @login_required

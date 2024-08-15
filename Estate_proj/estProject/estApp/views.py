@@ -5,7 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Housing
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
+
+confirmation_message = ""
 
 @login_required
 def home(request):
@@ -19,8 +22,19 @@ def register_view(request):
             email = form.cleaned_data.get('email')
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+            role = form.cleaned_data.get('role')
             user = User.objects.create_user(email=email,username=username, password=password)
             login(request, user)
+            
+            if user is not None: 
+                send_mail(
+                    "Confirmation email from Real Estate",
+                    username + " has officially registered as "+role + " on BlueSpace real estate. Welcome and thank you for choosing to work with us."+"    \t\t Kind Regards, \t Customer Service",
+                    "badmuspatrick5@gmail.com",
+                    [email],
+                    fail_silently=False
+                )
+                
             return redirect('home')
         
     else:

@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estApp.apps.EstappConfig', 
-    'bootstrap5', 
-    'crispy_forms',
+     
+    
     'Listing.apps.ListingConfig',
 ]
 
@@ -138,4 +138,16 @@ LOGIN_REDIRECT_URL = '/listingform/create_listing'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5' 
+#CRISPY_TEMPLATE_PACK = 'bootstrap5' 
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'badmuspatrick5@gmail.com'
+EMAIL_HOST_PASSWORD = 'qnyy ynwb ohvn nnxt'
