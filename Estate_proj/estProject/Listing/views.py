@@ -32,7 +32,7 @@ def create_listing(request):
                     video.listing = house_listing
                     vid.save()
                     
-            return redirect('success_page')
+            return redirect('home')
     else:
         form = ListingForm()
         image_formset = ListingImageFormSet(queryset=ListingImage.objects.none())
@@ -44,13 +44,13 @@ def create_listing(request):
                      })    
 
 
-def view_listing(request, listing_id):
-    listing = get_object_or_404(Listing, id=listing_id, owner=request.user)
-    images = ListingImage.objects.filter(listing=listing)
-    videos = ListingVideo.objects.filter(listing=listing)
+def view_listing(request):
+    listings = Listing.objects.all()
+    images = ListingImage.objects.all()
+    videos = ListingVideo.objects.all()
 
     return render(request, 'listingform/view_listing.html', {
-        'listing': listing,
+        'listings': listings,
         'images': images,
         'videos': videos,
     })
@@ -65,7 +65,7 @@ def update_house_listing(request, property_id):
             form.save()
             return redirect('view_house_listings.html')
     form = Listing(instance=house_list)
-    return render(request, 'view_house_listing.html', {'form': form})
+    return render(request, 'view_house_listings.html', {'form': form})
  
     
 @login_required

@@ -29,7 +29,7 @@ def register_view(request):
             if user is not None: 
                 send_mail(
                     "Confirmation email from Real Estate",
-                    username + " has officially registered as "+role + " on BlueSpace real estate. Welcome and thank you for choosing to work with us."+"    \t\t Kind Regards, \t Customer Service",
+                    username + " has officially registered as "+role + " on BlueSpace real estate. Welcome and thank you for choosing to work with us."+"\n\nKind Regards, \n Customer Service",
                     "badmuspatrick5@gmail.com",
                     [email],
                     fail_silently=False

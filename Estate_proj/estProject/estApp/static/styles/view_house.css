@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.listings-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.listing {
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.image-container img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.lister-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: green;
+}
+
+.description-container {
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
