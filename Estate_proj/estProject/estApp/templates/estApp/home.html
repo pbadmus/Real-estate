@@ -4,19 +4,51 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home_style.css' %}">
 </head>
 <body>
+    <header class="admin-header">
+        <div class="branding">
+            <h1>BLUESPACE Real Estate Dashboard</h1>
+        </div>
+        <div class="user-info">
+            <span>Welcome, {{ user.username }}</span> |
+            <a href="#">Profile</a> /
+            <a href="{% url 'password_change' %}">Change password</a> /
+            <a href="{% url 'login' %}">Log out</a>
+        </div>
+    </header>
     <div class="container">
-        <h2>Welcome, {{ user.username }}</h2>
-        <ul>
-            <li><a href="{% url 'create_listing' %}">Add House Listing</a></li>
-            <li><a href="{% url 'view_listing' %}">View Listing</a></li>
-        </ul>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
+        <div class="search-container">
+            <form action="{% url 'search_results' %}" method="get">
+                <input name="q" type="text" placeholder="Search by name, loc, price">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+        <div class="listing-actions">
+            <a href="{% url 'create_listing' %}" class="btn">Add House Listing</a>
+            <a href="{% url 'view_listing' %}" class="btn">View Listing Info</a>
+        </div>
+        <div class="listing-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Price (GHS)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listing in listings %}
+                        <tr>
+                            <td>{{ listing.title }}</td>
+                            <td>{{ listing.address }}, {{ listing.city }}</td>
+                            <td>{{ listing.price }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

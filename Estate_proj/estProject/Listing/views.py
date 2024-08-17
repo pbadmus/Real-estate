@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Listing, ListingImage, ListingVideo
 from .forms import ListingForm, ListingImageFormSet, ListingVideoFormSet
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q
 
 # Create your views here.
 
@@ -77,3 +79,13 @@ def delete_house_listing(request, property_id):
     return render(request, 'delete_house_listing.html', {'house_listing': house_list})
          
     
+class SearchResultsView(ListView):
+    model = Listing
+    template_name = "functions/search_result.html"
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Listing.objects.filter(
+            Q(title__icontains=query) | Q(city__icontains=query) 
+        )
+        return object_list

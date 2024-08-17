@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+
+from Listing.models import Listing, ListingImage, ListingVideo
 from .forms import RegisterUser
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Housing
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 
@@ -12,7 +13,16 @@ confirmation_message = ""
 
 @login_required
 def home(request):
-    return render(request, 'estApp/home.html')
+    listings = Listing.objects.all()
+    images = ListingImage.objects.all()
+    videos = ListingVideo.objects.all()
+    return render(request, 'estApp/home.html', {
+        'listings': listings,
+        'images': images,
+        'videos': videos,
+    })
+    
+
 
 
 def register_view(request):
@@ -56,7 +66,7 @@ def login_view(request):
             error_message = "Invalid username or password, please enter correct credentials."  
     return render(request, 'accounts/login.html', {'error': error_message})
 
-
+        
 
 def logout_view(request):
     if request.method == "POST":
