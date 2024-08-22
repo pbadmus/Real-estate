@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.header {
+    background-color: #3c3c3a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.details-container {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.details-container h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.details-container .price {
+    font-size: 20px;
+    color: #e74c3c;
+    margin: 10px 0;
+}
+
+.details-container .info,
+.details-container .year-built,
+.details-container .tenure,
+.details-container .unit-size,
+.details-container .floor-level,
+.details-container .property-type,
+.details-container .build-year {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.details-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.details-container button:hover {
+    background-color: #2980b9;
+}
+
+.footer {
+    background-color: #3c3c3a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

@@ -33,19 +33,27 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Property Type</th>
                         <th>Location</th>
                         <th>Price (GHS)</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for listing in listings %}
-                        <tr>
-                            <td>{{ listing.title }}</td>
-                            <td>{{ listing.address }}, {{ listing.city }}</td>
-                            <td>{{ listing.price }}</td>
-                        </tr>
-                    {% endfor %}
+                    <tr>
+                        <td>
+                            {% if listing.property_id %}
+                                <a href="{% url 'listing_detail' listing.property_id %}" style="text-decoration: none;">
+                                    {{ listing.title }}
+                                </a>
+                            {% else %}
+                                {{ listing.title }}
+                            {% endif %}
+                        </td>
+                        <td>{{ listing.address }}, {{ listing.city }}</td>
+                        <td>{{ listing.price }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>

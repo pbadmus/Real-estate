@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Listing</title>
+    <link rel="stylesheet" href="{% static 'styles/product.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Real Estate Listings</h1>
+    </header>
+    <main class="main-content">
+        <div class="image-container">
+            <img src="{{listing.image.all.0.image.url}}" alt="Lentor Mansion Interior View">
+        </div>
+        <div class="details-container">
+            <h2>{{listing.title}}</h2>
+            <p class="price">GHS {{listing.price}}</p>
+            <p class="info">3 Bedrooms | 3 Bathrooms | Starting from $1525 psf</p>
+            <p class="year-built">Newly Built: 2022</p>
+            <p class="tenure">Tenure: Freehold</p>
+            <p class="unit-size">Unit Size: 1,750 sqft</p>
+            <p class="floor-level">Floor Level: High Floor</p>
+            <p class="property-type">Property Type: HDB</p>
+            <p class="build-year">Build Year: 2022</p>
+            <button>Contact {{user.username}}</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© 2024 Real Estate Listings. All rights reserved.</p>
+    </footer>
+</body>
+</html>
