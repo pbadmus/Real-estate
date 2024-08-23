@@ -75,11 +75,11 @@ def update_house_listing(request, property_id):
     
 @login_required
 def delete_house_listing(request, property_id):
-    house_list = get_object_or_404(Listing, property_id=property_id, owner=request.user)
+    house_list = get_object_or_404(Listing, property_id=property_id)
     if request.method == "POST":
         house_list.delete()
-        return redirect('view_house_listings')
-    return render(request, 'delete_house_listing.html', {'house_listing': house_list})
+        return redirect('home')
+    return render(request, 'listingform/delete_house_listing.html', {'house_listing': house_list})
 
 @login_required
 def listing_details(request, property_id):

@@ -107,3 +107,13 @@ body {
 .listing-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+.listing-table a {
+    color: brown; /* Change link color to brown */
+    text-decoration: none; /* Remove underline */
+}
+
+.listing-table a:hover {
+    color: brown; /* Maintain brown color on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}

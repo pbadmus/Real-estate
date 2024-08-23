@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home_view.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home View</title>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Property</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="contact-info">
+                <span>Call Us: +233545454540</span>
+                <a href="{% url 'login' %}" class="btn">Log in</a>
+
+            </div>    
+        </nav>
+    </header>
+    <section class="search-section">
+        <input type="text" placeholder="Enter Keyword">
+        <select>
+            <option value="rent">Rent</option>
+            <option value="buy">Buy</option>
+        </select>
+        <input type="number" placeholder="Bed">
+        <input type="number" placeholder="Bath">
+        <button>Search</button>
+    </section>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p>3 Bed .2 Bath .2200 sqft</p>
+            <h1>Light House Accra </h1>
+            <p>Get ready to choose your perfect property</p>
+            <span class="price">GHS 40,272</span>
+            <a href="#" class="btn">View Property</a>
+            
+        </div>
+        </section>
+        
+    
+
+    <section class="property-types">
+        <h1>Explore Property Types</h1>
+        <div class="property-type">
+            <img src="{% static 'images/apartment.png' %}"alt="Apartment">
+            <h2>GHS 12,000</h2>
+            <h3>APARTMENT</h3>
+            <p>One of the closest building to the city center, reserve and finest schools.</p>
+        </div>
+        <div class="property-type">
+            <img src="{% static 'images/office.png' %}" alt="Office">
+            <h2>GHS 12,000</h2>
+            <h3>OFFICE</h3>
+            <p>This is top floor office with view of the Lagoon beach.</p>
+        </div>
+        <div class="property-type">
+            <img src="{% static 'images/apartment.png' %}" alt="Classic Home">
+            <h2>GHS 35,000</h2>
+            <h3>CLASSIC HOME</h3>
+            <p>Are you finding it difficult to convince your partner to move? Come to us.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 BlueSpace Real Estate. All rights reserved.</p>
+    </footer>
+</body>
+</html>

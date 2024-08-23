@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 FUNISHED_STATE = {
     ('FF', 'Fully Furnished'),
@@ -23,6 +24,7 @@ class Listing(models.Model):
     boys_quarters = models.BooleanField(default=False)
     furnished = models.BooleanField(default=False)
     furnished_state = models.CharField(max_length=20, choices=FUNISHED_STATE, blank=True)
+    
     
     
     def __str__(self):

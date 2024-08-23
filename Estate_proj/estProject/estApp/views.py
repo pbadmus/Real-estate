@@ -9,10 +9,22 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 
 
-confirmation_message = ""
+
+
+
+def home(request):
+    listings = Listing.objects.all()
+    images = ListingImage.objects.all()
+    videos = ListingVideo.objects.all()
+    return render(request, 'estApp/home_view.html', {
+        'listings': listings,
+        'images': images,
+        'videos': videos,
+    })
+
 
 @login_required
-def home(request):
+def seller_page(request):
     listings = Listing.objects.all()
     images = ListingImage.objects.all()
     videos = ListingVideo.objects.all()
@@ -21,7 +33,6 @@ def home(request):
         'images': images,
         'videos': videos,
     })
-    
 
 
 
@@ -45,7 +56,7 @@ def register_view(request):
                     fail_silently=False
                 )
                 
-            return redirect('home')
+            return redirect('seller_page')
         
     else:
         form = RegisterUser()
@@ -60,7 +71,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)  
         if user is not None:  
             login(request, user)  
-            next_url = request.POST.get('next') or request.GET.get('next') or reverse('home')  
+            next_url = request.POST.get('next') or request.GET.get('next') or reverse('seller_page')  
             return redirect(next_url) 
         else:
             error_message = "Invalid username or password, please enter correct credentials."  
